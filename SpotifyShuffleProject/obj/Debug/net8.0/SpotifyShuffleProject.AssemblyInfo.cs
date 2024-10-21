@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpotifyShuffleProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1734d36d7488f76df73a0796501a97a15294543b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6bfa1ee24adae68c6f58c012614ea6d0fe65af79")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpotifyShuffleProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpotifyShuffleProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

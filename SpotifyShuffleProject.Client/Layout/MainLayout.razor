@@ -5,16 +5,6 @@
 <MudDialogProvider />
 <MudSnackbarProvider />
 <MudLayout>
-    <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Application</MudText>
-        <MudSpacer />
-        <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
-    </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
-        <NavMenu />
-    </MudDrawer>
     <MudMainContent Class="mt-16 pa-4">
         @Body
     </MudMainContent>
@@ -44,12 +34,6 @@
         };
     }
 
-
-    private void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }
-
     private void DarkModeToggle()
     {
         _isDarkMode = !_isDarkMode;
@@ -67,31 +51,31 @@
 
     private readonly PaletteDark _darkPalette = new()
     {
-        Primary = "#7e6fff",
-        Surface = "#1e1e2d",
-        Background = "#1a1a27",
-        BackgroundGray = "#151521",
-        AppbarText = "#92929f",
         AppbarBackground = "rgba(26,26,39,0.8)",
-        DrawerBackground = "#1a1a27",
+        AppbarText = "#92929f",
         ActionDefault = "#74718e",
         ActionDisabled = "#9999994d",
         ActionDisabledBackground = "#605f6d4d",
-        TextPrimary = "#b2b0bf",
-        TextSecondary = "#92929f",
-        TextDisabled = "#ffffff33",
-        DrawerIcon = "#92929f",
+        Background = "#1a1a27",
+        BackgroundGray = "#151521",
+        DrawerBackground = "#1a1a27",
         DrawerText = "#92929f",
+        DrawerIcon = "#92929f",
+        Divider = "#292838",
+        Error = "#ff3f5f",
         GrayLight = "#2a2833",
         GrayLighter = "#1e1e2d",
         Info = "#4a86ff",
-        Success = "#3dcb6c",
-        Warning = "#ffb545",
-        Error = "#ff3f5f",
         LinesDefault = "#33323e",
-        TableLines = "#33323e",
-        Divider = "#292838",
+        Surface = "#1e1e2d",
         OverlayLight = "#1e1e2d80",
+        Primary = "#7e6fff",
+        Success = "#3dcb6c",
+        TableLines = "#33323e",
+        TextPrimary = "#b2b0bf",
+        TextSecondary = "#92929f",
+        TextDisabled = "#ffffff33",
+        Warning = "#ffb545",
     };
 
     public string DarkLightModeButtonIcon => _isDarkMode switch
