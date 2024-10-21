@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj": {}
+    "c:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj": {
+    "c:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
+        "projectUniqueName": "c:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
         "projectName": "SpotifyShuffleProject",
-        "projectPath": "C:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
+        "projectPath": "c:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
         "packagesPath": "C:\\Users\\joe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\obj\\",
+        "outputPath": "c:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\joe\\AppData\\Roaming\\NuGet\\NuGet.Config",
