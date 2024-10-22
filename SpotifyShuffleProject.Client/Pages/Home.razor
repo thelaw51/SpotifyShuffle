@@ -1,7 +1,36 @@
 ﻿@page "/"
-
 <PageTitle>Home</PageTitle>
 
 <MudText Typo="Typo.h3" GutterBottom="true">Spotify Playlist Shuffle</MudText>
 
 <MudButton Variant="Variant.Filled" Color="Color.Primary">Shuffle Playlist</MudButton>
+
+<MudDataGrid Items="@Songs" RowsPerPage="4">
+   <Columns>
+      <PropertyColumn Property="x => x.Name" Title="Name" />
+      <PropertyColumn Property="x => x.Artist" Title="Artist" />
+      <PropertyColumn Property="x => x.Album" Title="Album"/>
+      <TemplateColumn CellClass="d-flex justify-end">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudButton Size="@Size.Small" Variant="@Variant.Filled" Color="@Color.Primary">Shuffle</MudButton>
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+   </Columns>
+</MudDataGrid>
+
+@code {
+   private IEnumerable<Song> Songs = new List<Song>();
+
+   protected override async Task OnInitializedAsync()
+   {
+      Songs = new List<Song>
+      {
+         new Song { Name = "Song 1", Artist = "Artist 1", Album = "Album 1" },
+         new Song { Name = "Song 2", Artist = "Artist 2", Album = "Album 2" },
+         new Song { Name = "Song 3", Artist = "Artist 3", Album = "Album 3" },
+         new Song { Name = "Song 4", Artist = "Artist 4", Album = "Album 4" }
+      };
+   }
+}
