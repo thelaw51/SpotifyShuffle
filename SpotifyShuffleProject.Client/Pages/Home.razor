@@ -1,4 +1,6 @@
 ﻿@page "/"
+@using SpotifyShuffleProject.Models
+@inject HttpClient httpClient
 
 <PageTitle>Home</PageTitle>
 
@@ -22,12 +24,12 @@
 </MudDataGrid>
 
 @code {
-   
+
    private IEnumerable<Song> Songs = new List<Song>();
 
    protected override async Task OnInitializedAsync()
    {
-      var rowCount = new Random().Next(0, 1000);
+      var rowCount = new Random().Next(5, 1000);
       for (var i = 0; i < rowCount; i++)
       {
          var newSong = new Song { Name = "Song " + (i + 1), Artist = "Artist " + (i + 1), Album = "Album " + (i + 1) };
@@ -35,10 +37,10 @@
          songsList.Add(newSong);
          Songs = songsList;
       }
-      
+
    }
-   
-   
+
+
    // Function to perform Base64 URL-safe encoding
    private static string Base64UrlEncode(byte[] input)
    {
@@ -65,12 +67,12 @@
    private static string GenerateRandomString(int length)
    {
       const string possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        
+
       // Build the random string using cryptographic random generator
       using var rng = new RNGCryptoServiceProvider();
       var randomBytes = new byte[length];
       rng.GetBytes(randomBytes);
-            
+
       // Convert each byte to a character in the `possible` string
       var chars = randomBytes.Select(b => possible[b % possible.Length]);
       return new string(chars.ToArray());
@@ -85,7 +87,23 @@
       // Save to local storage
       await JS.InvokeVoidAsync("localStorageHelper.setItem", "code_verifier", codeVerifier);
 
-      // Call the method to redirect user
-      SpotifyAuth.RedirectToSpotifyAuth(new Uri("https://accounts.spotify.com/authorize"), codeChallenge, codeVerifier);
+      ExchangeCodeRequest request = new ExchangeCodeRequest
+         {
+            codeChallenge = codeChallenge,
+            codeChallengeMethod = "S256",
+            responseType = "code",
+         };
+
+      var response = await httpClient.PostAsJsonAsync("api/Auth/exchange", request);
+
+      if (response.IsSuccessStatusCode)
+      {
+         var redirectUrl = await response.Content.ReadAsStringAsync();
+         await JS.InvokeVoidAsync("window.location.href", redirectUrl);
+      }
+      else
+      {
+         // Handle error
+      }
    }
 }
