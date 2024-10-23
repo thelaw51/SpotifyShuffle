@@ -1,7 +1,5 @@
 ﻿@page "/"
-@using System.Security.Cryptography
-@using System.Text
-@inject IJSRuntime JS
+
 <PageTitle>Home</PageTitle>
 
 <MudText Typo="Typo.h3" GutterBottom="true">Spotify Playlist Shuffle</MudText>
@@ -29,10 +27,10 @@
 
    protected override async Task OnInitializedAsync()
    {
-      int rowCount = new Random().Next(0, 1000);
-      for (int i = 0; i < rowCount; i++)
+      var rowCount = new Random().Next(0, 1000);
+      for (var i = 0; i < rowCount; i++)
       {
-         Song newSong = new Song { Name = "Song " + (i + 1), Artist = "Artist " + (i + 1), Album = "Album " + (i + 1) };
+         var newSong = new Song { Name = "Song " + (i + 1), Artist = "Artist " + (i + 1), Album = "Album " + (i + 1) };
          List<Song> songsList = Songs.ToList();
          songsList.Add(newSong);
          Songs = songsList;
@@ -40,11 +38,12 @@
       
    }
    
+   
    // Function to perform Base64 URL-safe encoding
-   public static string Base64UrlEncode(byte[] input)
+   private static string Base64UrlEncode(byte[] input)
    {
       // Convert byte array to a regular Base64 string
-      string base64 = Convert.ToBase64String(input);
+      var base64 = Convert.ToBase64String(input);
 
       // Configure the string to be URL-safe
       base64 = base64.Replace("=", "") // Remove any trailing '=' characters used for padding
@@ -55,30 +54,26 @@
    }
 
    // Generate the SHA-256 hash and return the URL-safe Base64 encoded version
-   public static async Task<string> ComputeSha256HashAndEncode(string plainText)
+   private static async Task<string> ComputeSha256HashAndEncode(string plainText)
    {
-      using (var sha256 = SHA256.Create())
-      {
-         byte[] bytes = Encoding.UTF8.GetBytes(plainText);
-         byte[] hashBytes = await Task.Run(() => sha256.ComputeHash(bytes));
-         return Base64UrlEncode(hashBytes);
-      }
+      using var sha256 = SHA256.Create();
+      var bytes = Encoding.UTF8.GetBytes(plainText);
+      var hashBytes = await Task.Run(() => sha256.ComputeHash(bytes));
+      return Base64UrlEncode(hashBytes);
    }
-   
-   public static string GenerateRandomString(int length)
+
+   private static string GenerateRandomString(int length)
    {
       const string possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         
       // Build the random string using cryptographic random generator
-      using (var rng = new RNGCryptoServiceProvider())
-      {
-         var randomBytes = new byte[length];
-         rng.GetBytes(randomBytes);
+      using var rng = new RNGCryptoServiceProvider();
+      var randomBytes = new byte[length];
+      rng.GetBytes(randomBytes);
             
-         // Convert each byte to a character in the `possible` string
-         var chars = randomBytes.Select(b => possible[b % possible.Length]);
-         return new string(chars.ToArray());
-      }
+      // Convert each byte to a character in the `possible` string
+      var chars = randomBytes.Select(b => possible[b % possible.Length]);
+      return new string(chars.ToArray());
    }
 
    private async Task StartSpotifyAuth()
@@ -91,6 +86,6 @@
       await JS.InvokeVoidAsync("localStorageHelper.setItem", "code_verifier", codeVerifier);
 
       // Call the method to redirect user
-      // SpotifyAuth.RedirectToSpotifyAuth(new Uri("https://accounts.spotify.com"), codeChallenge, codeVerifier);
+      SpotifyAuth.RedirectToSpotifyAuth(new Uri("https://accounts.spotify.com/authorize"), codeChallenge, codeVerifier);
    }
 }
