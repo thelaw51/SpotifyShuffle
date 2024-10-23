@@ -466,7 +466,7 @@
           }
         }
       },
-      "MudBlazor/7.13.0": {
+      "MudBlazor/7.14.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "8.0.8",
@@ -1232,10 +1232,10 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
-    "MudBlazor/7.13.0": {
-      "sha512": "FapnlYCCN84ah+5vwMjcLAvdwFUXhsNxroi7y1sRI0vqYtUR6IZu0CaTbI9zcFAjDHQ4acHVNN71rcRbOfX+Rg==",
+    "MudBlazor/7.14.0": {
+      "sha512": "hpuNSlI6/BVCe4H6X4BoHijxMffFE1ldunvFzAFZRTGuSGoYC7N6IIUv64MN3F/hkiRllx3gtivTZjivymxIpQ==",
       "type": "package",
-      "path": "mudblazor/7.13.0",
+      "path": "mudblazor/7.14.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1252,7 +1252,7 @@
         "lib/net7.0/MudBlazor.xml",
         "lib/net8.0/MudBlazor.dll",
         "lib/net8.0/MudBlazor.xml",
-        "mudblazor.7.13.0.nupkg.sha512",
+        "mudblazor.7.14.0.nupkg.sha512",
         "mudblazor.nuspec",
         "staticwebassets/MudBlazor.min.css",
         "staticwebassets/MudBlazor.min.js"
@@ -1300,35 +1300,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Joe\\.nuget\\packages\\": {}
+    "/Users/joegillard/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
+      "projectUniqueName": "/Users/joegillard/repos/SpotifyShuffle/SpotifyShuffleProject/SpotifyShuffleProject.csproj",
       "projectName": "SpotifyShuffleProject",
-      "projectPath": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
-      "packagesPath": "C:\\Users\\Joe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject\\obj\\",
+      "projectPath": "/Users/joegillard/repos/SpotifyShuffle/SpotifyShuffleProject/SpotifyShuffleProject.csproj",
+      "packagesPath": "/Users/joegillard/.nuget/packages/",
+      "outputPath": "/Users/joegillard/repos/SpotifyShuffle/SpotifyShuffleProject/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Joe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/joegillard/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject.Client\\SpotifyShuffleProject.Client.csproj": {
-              "projectPath": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject.Client\\SpotifyShuffleProject.Client.csproj"
+            "/Users/joegillard/repos/SpotifyShuffle/SpotifyShuffleProject.Client/SpotifyShuffleProject.Client.csproj": {
+              "projectPath": "/Users/joegillard/repos/SpotifyShuffle/SpotifyShuffleProject.Client/SpotifyShuffleProject.Client.csproj"
             }
           }
         }
@@ -1337,11 +1334,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1372,7 +1364,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/8.0.8_1/libexec/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,4 +13,8 @@
     <PackageReference Include="MudBlazor" Version="7.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\localStorageHelper.js" />
+  </ItemGroup>
+
 </Project>
