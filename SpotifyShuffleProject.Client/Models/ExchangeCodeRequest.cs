@@ -1,17 +1,19 @@
-﻿namespace SpotifyShuffleProject.Models
+﻿namespace SpotifyShuffleProject.Client.Models
 {
    public class ExchangeCodeRequest
    {
-      public string responseType { get; set; }
+      public string? clientID { get; set; }
 
-      public string clientID { get; set; }
+      public string? responseType { get; set; } = "code";
 
-      public string scope { get; set; }
+      public string? redirectURI { get; set; }
 
-      public string codeChallengeMethod { get; set; }
+      public string? state { get; set; }
 
-      public string codeChallenge { get; set; }
+      public string? scope { get; set; }
 
-      public string redirectURI { get; set; }
+      public string? codeChallengeMethod { get; set; } = "S256";
+
+      public string? codeChallenge { get; set; }
    }
 }
