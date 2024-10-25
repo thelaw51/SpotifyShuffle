@@ -87,7 +87,7 @@
         };
         try
         {
-            var response = await httpClient.PostAsJsonAsync("api/Auth/exchange", request);
+            var response = await httpClient.PostAsJsonAsync("api/Auth/authSpotify", request);
             if (response.IsSuccessStatusCode)
             {
                 var redirectUrl = await response.Content.ReadAsStringAsync();

@@ -148,9 +148,21 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AspNet.Security.OAuth.Spotify": {
+              "target": "Package",
+              "version": "[8.2.0, )"
+            },
+            "DotNetEnv": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly.Server": {
               "target": "Package",
               "version": "[8.*, )"
+            },
+            "SpotifyAPI.Web": {
+              "target": "Package",
+              "version": "[7.2.1, )"
             }
           },
           "imports": [

@@ -1,14 +1,18 @@
+using AspNet.Security.OAuth.Spotify;
 using Blazored.LocalStorage;
 using MudBlazor.Services;
 using SpotifyShuffleProject.Components;
 using SpotifyShuffleProject.Services;
 using SpotifyShuffleProject.Services.Interfaces;
+using DotNetEnv;
+
+
+Env.Load("stuff.env");
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add MudBlazor services
 builder.Services.AddMudServices();
-
 
 
 // Add services to the container.

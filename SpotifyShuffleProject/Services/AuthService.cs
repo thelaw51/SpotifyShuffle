@@ -1,30 +1,45 @@
+using System.Security.Cryptography;
 using SpotifyShuffleProject.Services.Interfaces;
 using SpotifyShuffleProject.Models;
+using SpotifyAPI.Web;
 
 namespace SpotifyShuffleProject.Services
 {
    public class AuthService : IAuthService
    {
-      public async Task<HttpResponseMessage> ExchangeAuthorizationCodeForToken(HttpClient client,
-         ExchangeCodeRequest requestDetails)
+      public async Task<Uri> Login()
       {
-         var request = new HttpRequestMessage(HttpMethod.Post, "https://accounts.spotify.com/authorize");
-         var content = new FormUrlEncodedContent(new[]
-         {
-            new KeyValuePair<string, string>("client_id", Environment.GetEnvironmentVariable("CLIENT_ID")),
-            new KeyValuePair<string, string>("response_type", requestDetails.responseType),
-            new KeyValuePair<string, string>("redirect_uri", requestDetails.RedirectUri),
-            new KeyValuePair<string, string>("code_challenge_method", requestDetails.codeChallengeMethod),
-            new KeyValuePair<string, string>("code_challenge", requestDetails.codeChallenge)
-         });
-         request.Content = content;
-
-         return await client.SendAsync(request);
+         return GenerateLoginUri();
       }
 
-      public Task<HttpResponseMessage> ExchangeAuthorization(HttpClient client, string code, string codeVerifier)
+      private static string GenerateRandomString(int length)
       {
-         throw new NotImplementedException();
+         const string possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+         using var rng = new RNGCryptoServiceProvider();
+         var randomBytes = new byte[length];
+         rng.GetBytes(randomBytes);
+
+         var chars = randomBytes.Select(b => possible[b % possible.Length]);
+         return new string(chars.ToArray());
+      }
+
+      private static Uri GenerateLoginUri()
+      {
+         var (verifier, challenge) =
+            PKCEUtil.GenerateCodes(GenerateRandomString(64));
+
+         var loginRequest = new LoginRequest(
+            new Uri("https://localhost:7188/"),
+            Environment.GetEnvironmentVariable("CLIENT_ID"),
+            LoginRequest.ResponseType.Code
+         )
+         {
+            CodeChallengeMethod = "S256",
+            CodeChallenge = challenge,
+            Scope = new[] { Scopes.PlaylistReadPrivate, Scopes.PlaylistReadCollaborative }
+         };
+         return loginRequest.ToUri();
       }
    }
 }

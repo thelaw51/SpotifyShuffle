@@ -10,7 +10,7 @@ namespace MyBlazorServer.Controllers
    public class AuthController : ControllerBase
    {
       private readonly IHttpClientFactory _httpClientFactory;
-      private IAuthService _authService;
+      private readonly IAuthService _authService;
 
       public AuthController(IHttpClientFactory httpClientFactory, IAuthService authService)
       {
@@ -19,21 +19,12 @@ namespace MyBlazorServer.Controllers
       }
 
       [HttpPost]
-      [Route("exchange")]
-      public async Task<IActionResult> ExchangeCode([FromBody] ExchangeCodeRequest request)
+      [Route("authSpotify")]
+      public async Task<IActionResult> ExchangeCode()
       {
-         var client = _httpClientFactory.CreateClient();
-
-         var tokenResponse =
-            await _authService.ExchangeAuthorizationCodeForToken(client, request);
-
-         if (tokenResponse.IsSuccessStatusCode)
-         {
-            var token = await tokenResponse.Content.ReadAsStringAsync();
-            return Ok(token);
-         }
-
-         return BadRequest("Error exchanging code");
+         var loginUri =
+            await _authService.Login();
+         return Redirect(loginUri.ToString());
       }
    }
 }
