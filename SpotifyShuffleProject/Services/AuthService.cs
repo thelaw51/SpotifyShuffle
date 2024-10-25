@@ -7,18 +7,17 @@ namespace SpotifyShuffleProject.Services
 {
    public class AuthService : IAuthService
    {
-      public async Task<Uri> Login()
+		public Task<Uri> Login()
       {
-         return GenerateLoginUri();
+         return Task.FromResult(GenerateLoginUri());
       }
 
       private static string GenerateRandomString(int length)
       {
          const string possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-         using var rng = new RNGCryptoServiceProvider();
          var randomBytes = new byte[length];
-         rng.GetBytes(randomBytes);
+         RandomNumberGenerator.Fill(randomBytes);
 
          var chars = randomBytes.Select(b => possible[b % possible.Length]);
          return new string(chars.ToArray());
@@ -29,9 +28,15 @@ namespace SpotifyShuffleProject.Services
          var (verifier, challenge) =
             PKCEUtil.GenerateCodes(GenerateRandomString(64));
 
+         var clientId = Environment.GetEnvironmentVariable("CLIENT_ID");
+         if (string.IsNullOrEmpty(clientId))
+         {
+            throw new InvalidOperationException("CLIENT_ID environment variable is not set.");
+         }
+
          var loginRequest = new LoginRequest(
             new Uri("https://localhost:7188/"),
-            Environment.GetEnvironmentVariable("CLIENT_ID"),
+            clientId,
             LoginRequest.ResponseType.Code
          )
          {

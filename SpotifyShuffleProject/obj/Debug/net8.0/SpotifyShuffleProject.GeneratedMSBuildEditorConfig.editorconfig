@@ -9,23 +9,23 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SpotifyShuffleProject
 build_property.RootNamespace = SpotifyShuffleProject
-build_property.ProjectDir = C:\Users\Joe\source\repos\SpotifyShuffle\SpotifyShuffleProject\
+build_property.ProjectDir = C:\Users\joe\source\repos\SpotifyShuffleProject\SpotifyShuffleProject\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Joe\source\repos\SpotifyShuffle\SpotifyShuffleProject
+build_property.MSBuildProjectDirectory = C:\Users\joe\source\repos\SpotifyShuffleProject\SpotifyShuffleProject
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Joe/source/repos/SpotifyShuffle/SpotifyShuffleProject/Components/App.razor]
+[C:/Users/joe/source/repos/SpotifyShuffleProject/SpotifyShuffleProject/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Joe/source/repos/SpotifyShuffle/SpotifyShuffleProject/Components/Pages/Error.razor]
+[C:/Users/joe/source/repos/SpotifyShuffleProject/SpotifyShuffleProject/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Joe/source/repos/SpotifyShuffle/SpotifyShuffleProject/Components/_Imports.razor]
+[C:/Users/joe/source/repos/SpotifyShuffleProject/SpotifyShuffleProject/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

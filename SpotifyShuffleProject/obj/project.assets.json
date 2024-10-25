@@ -6054,19 +6054,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Joe\\.nuget\\packages\\": {}
+    "C:\\Users\\joe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
+      "projectUniqueName": "C:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
       "projectName": "SpotifyShuffleProject",
-      "projectPath": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
-      "packagesPath": "C:\\Users\\Joe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject\\obj\\",
+      "projectPath": "C:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
+      "packagesPath": "C:\\Users\\joe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Joe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\joe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6081,8 +6081,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject.Client\\SpotifyShuffleProject.Client.csproj": {
-              "projectPath": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject.Client\\SpotifyShuffleProject.Client.csproj"
+            "C:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject.Client\\SpotifyShuffleProject.Client.csproj": {
+              "projectPath": "C:\\Users\\joe\\source\\repos\\SpotifyShuffleProject\\SpotifyShuffleProject.Client\\SpotifyShuffleProject.Client.csproj"
             }
           }
         }

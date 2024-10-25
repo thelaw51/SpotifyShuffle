@@ -8,97 +8,52 @@
 <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="StartSpotifyAuth">Authorise with Spotify</MudButton>
 
 <MudDataGrid Items="@_songs" RowsPerPage="4">
-    <Columns>
-        <PropertyColumn Property="x => x.Name" Title="Name"/>
-        <PropertyColumn Property="x => x.Artist" Title="Artist"/>
-        <PropertyColumn Property="x => x.Album" Title="Album"/>
-        <TemplateColumn CellClass="d-flex justify-end">
-            <CellTemplate>
-                <MudStack Row>
-                    <MudButton Size="@Size.Small" Variant="@Variant.Filled" Color="@Color.Primary">Shuffle</MudButton>
-                </MudStack>
-            </CellTemplate>
-        </TemplateColumn>
-    </Columns>
+	<Columns>
+		<PropertyColumn Property="x => x.Name" Title="Name" />
+		<PropertyColumn Property="x => x.Artist" Title="Artist" />
+		<PropertyColumn Property="x => x.Album" Title="Album" />
+		<TemplateColumn CellClass="d-flex justify-end">
+			<CellTemplate>
+				<MudStack Row>
+					<MudButton Size="@Size.Small" Variant="@Variant.Filled" Color="@Color.Primary">Shuffle</MudButton>
+				</MudStack>
+			</CellTemplate>
+		</TemplateColumn>
+	</Columns>
 </MudDataGrid>
 
 @code {
 
-    private IEnumerable<Song> _songs = new List<Song>();
+	private IEnumerable<Song> _songs = new List<Song>();
 
-    protected override async Task OnInitializedAsync()
-    {
-        var rowCount = new Random().Next(5, 1000);
-        for (var i = 0; i < rowCount; i++)
-        {
-            var newSong = new Song { Name = "Song " + (i + 1), Artist = "Artist " + (i + 1), Album = "Album " + (i + 1) };
-            List<Song> songsList = _songs.ToList();
-            songsList.Add(newSong);
-            _songs = songsList;
-        }
-    }
+	protected override async Task OnInitializedAsync()
+	{
+		var rowCount = new Random().Next(5, 1000);
+		for (var i = 0; i < rowCount; i++)
+		{
+			var newSong = new Song { Name = "Song " + (i + 1), Artist = "Artist " + (i + 1), Album = "Album " + (i + 1) };
+			List<Song> songsList = _songs.ToList();
+			songsList.Add(newSong);
+			_songs = songsList;
+		}
+	}
 
-
-    // Function to perform Base64 URL-safe encoding
-    private static string Base64UrlEncode(byte[] input)
-    {
-        var base64 = Convert.ToBase64String(input);
-
-        // Configure the string to be URL-safe
-        base64 = base64.Replace("=", "")
-            .Replace("+", "-")
-            .Replace("/", "_");
-
-        return base64;
-    }
-
-    private static async Task<string> ComputeSha256HashAndEncode(string plainText)
-    {
-        using var sha256 = SHA256.Create();
-        var bytes = Encoding.UTF8.GetBytes(plainText);
-        var hashBytes = await Task.Run(() => sha256.ComputeHash(bytes));
-        return Base64UrlEncode(hashBytes);
-    }
-
-    private static string GenerateRandomString(int length)
-    {
-        const string possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-        using var rng = new RNGCryptoServiceProvider();
-        var randomBytes = new byte[length];
-        rng.GetBytes(randomBytes);
-
-        var chars = randomBytes.Select(b => possible[b % possible.Length]);
-        return new string(chars.ToArray());
-    }
-
-    private async Task StartSpotifyAuth()
-    {
-        var codeVerifier = GenerateRandomString(64);
-        var codeChallenge = await ComputeSha256HashAndEncode(codeVerifier);
-
-        await localStorage.SetItemAsync("code_verifier", codeVerifier);
-
-        ExchangeCodeRequest request = new ExchangeCodeRequest
-        {
-            codeChallenge = codeChallenge,
-            codeChallengeMethod = "S256",
-            responseType = "code"
-        };
-        try
-        {
-            var response = await httpClient.PostAsJsonAsync("api/Auth/authSpotify", request);
-            if (response.IsSuccessStatusCode)
-            {
-                var redirectUrl = await response.Content.ReadAsStringAsync();
-                await JS.InvokeVoidAsync("window.location.href", redirectUrl);
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-    }
+	private async Task StartSpotifyAuth()
+	{
+		try
+		{
+			var response = await httpClient.GetAsync("api/Auth/GetSpotifyAuthURL");
+			if (response.IsSuccessStatusCode)
+			{
+				var result = await response.Content.ReadFromJsonAsync<AuthResponse>();
+				Navigation.NavigateTo(result.uri, forceLoad: true);
+			}
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e);
+			throw;
+		}
+	}
 
 }
