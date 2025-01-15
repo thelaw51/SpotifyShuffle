@@ -1,6 +1,5 @@
 using System.Security.Cryptography;
 using SpotifyShuffleProject.Services.Interfaces;
-using SpotifyShuffleProject.Models;
 using SpotifyAPI.Web;
 
 namespace SpotifyShuffleProject.Services
@@ -10,6 +9,11 @@ namespace SpotifyShuffleProject.Services
 		public Task<Uri> Login()
       {
          return Task.FromResult(GenerateLoginUri());
+      }
+
+      public Task<object> GetAccessToken(string code)
+      {
+         throw new NotImplementedException();
       }
 
       private static string GenerateRandomString(int length)

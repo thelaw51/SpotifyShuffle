@@ -1,5 +1,5 @@
+using System.Web;
 using Microsoft.AspNetCore.Mvc;
-using SpotifyShuffleProject.Models;
 using SpotifyShuffleProject.Services.Interfaces;
 
 namespace MyBlazorServer.Controllers
@@ -7,21 +7,21 @@ namespace MyBlazorServer.Controllers
 	[ApiController]
 	[IgnoreAntiforgeryToken]
 	[Route("api/[controller]")]
-	public class AuthController : ControllerBase
+	public class AuthController(IAuthService authService) : ControllerBase
 	{
-		private readonly IAuthService _authService;
-
-		public AuthController(IAuthService authService)
-		{
-			_authService = authService;
-		}
-
 		[HttpGet]
 		[Route("GetSpotifyAuthURL")]
-		public async Task<IActionResult> ExchangeCode()
+		public async Task<IActionResult> GetSpotifyAuthURL()
 		{
-			var loginUri = await _authService.Login();
+			var loginUri = await authService.Login();
 			return Ok(new { uri = loginUri.ToString() });
+		}
+		
+		[HttpGet]
+		[Route("SpotifyAuthRedirect{code}")]
+		public async Task<IActionResult> SpotifyAuthRedirect(string code)
+		{
+			var accessToken = await authService.GetAccessToken(code);
 		}
 	}
 }
