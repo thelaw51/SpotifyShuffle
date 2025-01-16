@@ -6,14 +6,32 @@ namespace SpotifyShuffleProject.Services
 {
    public class AuthService : IAuthService
    {
-		public Task<Uri> Login()
+      private static string _verifier;
+
+      public Task<Uri> Login()
       {
          return Task.FromResult(GenerateLoginUri());
       }
 
-      public Task<object> GetAccessToken(string code)
+      public async Task<SpotifyClient> GetCallback(string code)
       {
-         throw new NotImplementedException();
+         var clientId = Environment.GetEnvironmentVariable("CLIENT_ID");
+         if (string.IsNullOrEmpty(clientId))
+         {
+            throw new InvalidOperationException("CLIENT_ID environment variable is not set.");
+         }
+
+         // Note that we use the verifier calculated above!
+         var initialResponse = await new OAuthClient().RequestToken(
+            new PKCETokenRequest(clientId, code, new Uri("https://localhost:7188/"), _verifier)
+         );
+
+         var authenticator = new PKCEAuthenticator(clientId, initialResponse);
+
+         var config = SpotifyClientConfig.CreateDefault()
+            .WithAuthenticator(authenticator);
+         var spotify = new SpotifyClient(config);
+         return spotify;
       }
 
       private static string GenerateRandomString(int length)
@@ -31,6 +49,7 @@ namespace SpotifyShuffleProject.Services
       {
          var (verifier, challenge) =
             PKCEUtil.GenerateCodes(GenerateRandomString(64));
+         _verifier = verifier;
 
          var clientId = Environment.GetEnvironmentVariable("CLIENT_ID");
          if (string.IsNullOrEmpty(clientId))
@@ -46,7 +65,7 @@ namespace SpotifyShuffleProject.Services
          {
             CodeChallengeMethod = "S256",
             CodeChallenge = challenge,
-            Scope = new[] { Scopes.PlaylistReadPrivate, Scopes.PlaylistReadCollaborative }
+            Scope = [Scopes.PlaylistReadPrivate, Scopes.PlaylistReadCollaborative]
          };
          return loginRequest.ToUri();
       }

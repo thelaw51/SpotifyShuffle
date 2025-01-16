@@ -6054,33 +6054,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/joegillard/.nuget/packages/": {}
+    "C:\\Users\\Joe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/joegillard/repos/SpotifyShuffle/SpotifyShuffleProject/SpotifyShuffleProject.csproj",
+      "projectUniqueName": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
       "projectName": "SpotifyShuffleProject",
-      "projectPath": "/Users/joegillard/repos/SpotifyShuffle/SpotifyShuffleProject/SpotifyShuffleProject.csproj",
-      "packagesPath": "/Users/joegillard/.nuget/packages/",
-      "outputPath": "/Users/joegillard/repos/SpotifyShuffle/SpotifyShuffleProject/obj/",
+      "projectPath": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject\\SpotifyShuffleProject.csproj",
+      "packagesPath": "C:\\Users\\Joe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/joegillard/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Joe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/Users/joegillard/repos/SpotifyShuffle/SpotifyShuffleProject.Client/SpotifyShuffleProject.Client.csproj": {
-              "projectPath": "/Users/joegillard/repos/SpotifyShuffle/SpotifyShuffleProject.Client/SpotifyShuffleProject.Client.csproj"
+            "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject.Client\\SpotifyShuffleProject.Client.csproj": {
+              "projectPath": "C:\\Users\\Joe\\source\\repos\\SpotifyShuffle\\SpotifyShuffleProject.Client\\SpotifyShuffleProject.Client.csproj"
             }
           }
         }
@@ -6093,8 +6094,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -6136,7 +6138,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Joe\\.dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

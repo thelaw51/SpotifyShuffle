@@ -1,10 +1,11 @@
-﻿using SpotifyShuffleProject.Models;
+﻿using SpotifyAPI.Web;
+using SpotifyShuffleProject.Models;
 
 namespace SpotifyShuffleProject.Services.Interfaces
 {
    public interface IAuthService
    {
       Task<Uri> Login();
-      Task<object> GetAccessToken(string code);
+      Task<SpotifyClient> GetCallback(string code);
    }
 }
